@@ -4,16 +4,15 @@ import math
 import pickle
 import json
 
-# Define the argument parser
+
 parser = argparse.ArgumentParser(description='Run KLEE replay and calculate coverage for specified programs.')
 parser.add_argument('--testcase_file', type=str, required=True, help='Testcase file input.')
 parser.add_argument('--gcov_num', type=int, required=True, help='Number to replace in the gcov directory path.')
 dangerous = re.compile(
-    r'\b(rm|chmod|chown|mv|rmdir|unlink)\b|'                # 기존 위험 명령어
-    r'\bsed\b.*?\s+-i(\S*)?\s+.*(\*|\.\/sed|\b[a-zA-Z0-9._-]*sed\b)'  # sed -i 와 자기 자신 혹은 * 포함
-)
+    r'\b(rm|chmod|chown|mv|rmdir|unlink)\b|'               
+    r'\bsed\b.*?\s+-i(\S*)?\s+.*(\*|\.\/sed|\b[a-zA-Z0-9._-]*sed\b)'  
 
-# Parse the arguments
+
 args = parser.parse_args()
 
 # Load configuration from JSON file
@@ -42,11 +41,11 @@ def branch_handler(ktest_gcov, branch_visit_count, function_data):
     function_branch_taken = 0
 
     for line in lines:
-        # 소스 파일명 업데이트
+       
         if "-:    0:Source:" in line:
             src_name = line.split('/')[-1].strip().replace('-:    0:Source:', '')
         
-        # gcov의 코드 라인 (라인 번호 포함)에서 condition 방문 수 업데이트
+       
         elif re.match(r'\s*\d+:\s*\d+:', line):
             if "#####" in line:
                 continue
@@ -58,7 +57,7 @@ def branch_handler(ktest_gcov, branch_visit_count, function_data):
                 condition_visit_count = 0
                 line_number = 0
 
-        # branch 라인 처리 (원래 branch_visit_count 업데이트 코드 포함)
+       
         elif "branch" in line and "taken" in line:
             parts = line.split()
             branch_id = parts[1]
