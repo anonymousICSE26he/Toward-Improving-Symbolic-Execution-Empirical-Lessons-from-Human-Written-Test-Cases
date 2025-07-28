@@ -1,0 +1,52 @@
+{
+    "find": {
+        "gcov_dir": "/TowardImprovingSE/benchmarks/findutils-4.7.0/obj-gcov<gcov_num>/find",
+        "arguments_dir": "/TowardImprovingSE/klee_arguments/arguments",
+        "src_dir": "/TowardImprovingSE/benchmarks/findutils-4.7.0",
+        "rm_cmd": "rm ../*/*.gcov ../*/*/*.gcov ../*/*.gcda ../*/*/*.gcda cov_result",
+        "replay_cmd": "/TowardImprovingSE/klee/build/bin/klee-replay ./find ",
+        "cov_cmd": "gcov -b ../*/*.gcda ../*/*/*.gcda 1> cov_result 2> err"
+
+    },
+    "grep": {
+        "gcov_dir": "/TowardImprovingSE/benchmarks/grep-3.6/obj-gcov<gcov_num>/src",
+        "arguments_dir": "/TowardImprovingSE/klee_arguments/arguments",
+        "src_dir": "/TowardImprovingSE/benchmarks/grep-3.6",
+        "rm_cmd": "rm ../*/*.gcov ../*/*/*.gcov ../*/*.gcda ../*/*/*.gcda cov_result",
+        "replay_cmd": "/TowardImprovingSE/klee/build/bin/klee-replay ./grep ",
+        "cov_cmd": "gcov -b ../*/*.gcda ../*/*/*.gcda 1> cov_result 2> err"
+    },
+    "gcal": {
+        "gcov_dir": "/TowardImprovingSE/benchmarks/gcal-4.1/obj-gcov<gcov_num>/src",
+        "arguments_dir": "/TowardImprovingSE/klee_arguments/arguments",
+        "src_dir": "/TowardImprovingSE/benchmarks/gcal-4.1",
+        "rm_cmd": "rm ../*/*.gcov ../*/*/*.gcov ../*/*.gcda ../*/*/*.gcda cov_result",
+        "replay_cmd": "/TowardImprovingSE/klee/build/bin/klee-replay ./gcal ",
+        "cov_cmd": "gcov -b ../*/*.gcda ../*/*/*.gcda 1> cov_result 2> err"
+    },
+    "sed": {
+        "gcov_dir": "/TowardImprovingSE/benchmarks/sed-4.8/obj-gcov<gcov_num>/sed",
+        "arguments_dir": "/TowardImprovingSE/klee_arguments/arguments",
+        "src_dir": "/TowardImprovingSE/benchmarks/sed-4.8",
+        "rm_cmd": "rm ../*/*.gcov ../*/*/*.gcov ../*/*.gcda ../*/*/*.gcda cov_result",
+        "replay_cmd": "/TowardImprovingSE/klee/build/bin/klee-replay ./sed ",
+        "cov_cmd": "find . \\( -name '*.gcno' -o -name '*.gcda' \\) -print0 | xargs -0 gcov -b -s . 1> cov_result 2> err"
+    },
+
+    "gawk": {
+        "gcov_dir": "/TowardImprovingSE/benchmarks/gawk-5.1.0/obj-gcov<gcov_num>",
+        "arguments_dir": "/TowardImprovingSE/klee_arguments/arguments",
+        "src_dir": "/TowardImprovingSE/benchmarks/gawk-5.1.0",
+        "rm_cmd": "rm ./*.gcov ./*/*.gcov ./*.gcda ./*/*.gcda cov_result",
+        "replay_cmd": "/TowardImprovingSE/klee/build/bin/klee-replay ./gawk ",
+        "cov_cmd": "gcov -b ./*.gcda ./*/*.gcda 1> cov_result 2> err"
+    },
+    "diff": {
+        "gcov_dir": "/TowardImprovingSE/benchmarks/diffutils-3.7/obj-gcov<gcov_num>/src",
+        "arguments_dir": "/TowardImprovingSE/klee_arguments/arguments",
+        "src_dir": "/TowardImprovingSE/benchmarks/diffutils-3.7",
+        "rm_cmd": "rm ../*/*.gcov ../*/*/*.gcov ../*/*.gcda ../*/*/*.gcda cov_result",
+        "replay_cmd": "/TowardImprovingSE/klee/build/bin/klee-replay ./diff ",
+        "cov_cmd": "gcov -b ../*/*.gcda ../*/*/*.gcda 1> cov_result 2> err"
+    }
+}
