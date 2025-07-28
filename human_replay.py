@@ -15,7 +15,7 @@ dangerous = re.compile(
 
 args = parser.parse_args()
 
-# Load configuration from JSON file
+
 config_path = os.path.join(os.path.dirname(__file__), 'config.json')
 with open(config_path, 'r') as f:
     config_data = json.load(f)
@@ -25,8 +25,7 @@ class TimeoutException(Exception):
 def handler(signum, frame):
     raise TimeoutException()
 
-# Function to handle branches from .gcov files and count visitations
-# Additionally extracts function coverage data for aggregation
+
 def branch_handler(ktest_gcov, branch_visit_count, function_data):
     with open(ktest_gcov, 'r', errors='ignore') as f:
         lines = f.readlines()
@@ -35,7 +34,7 @@ def branch_handler(ktest_gcov, branch_visit_count, function_data):
     src_name = ""
     line_number = 0
 
-    # 현재 처리 중인 함수 블록 관련 변수
+
     current_function = None
     function_branch_total = 0
     function_branch_taken = 0
